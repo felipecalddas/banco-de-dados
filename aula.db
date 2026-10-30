@@ -1,0 +1,178 @@
+CREATE DATABASE AULA_NOITE4;
+
+USE AULA_NOITE4;
+
+CREATE TABLE empregado (
+   matricula INT primary key,
+   nome VARCHAR(100) not null,
+   cpf	VARCHAR(14) UNIQUE,
+   salario DECIMAL(10,2) not null
+);
+
+INSERT INTO empregado 
+(matricula, nome, cpf, salario) 
+VALUES 
+(220, 'JOSEFA', '01123456700', 1500), 
+(223, 'Mariana', '01023456789', 1500), 
+(224, 'PEDRO', '01223456789', 1500),
+(333, 'DOMINGUES', '01123456788', 10500),
+(111, 'MENDEZ', NULL, 3000),
+(2209, 'JOSEFINA', '02123456700', 1500), 
+(2239, 'Mariano', '02023456789', 1500), 
+(2249, 'PAULO', '02223456789', 1500),
+(3339, 'SAVIO', '02123456788', 10500),
+(1119, 'AMARAL', NULL, 3000),
+(2220, 'Lorena', '123456700', 1500), 
+(2223, 'Maria', '023456789', 1500), 
+(2224, 'Jose', '223456789', 1500),
+(3333, 'DOMINGOS', '123456788', 10500),
+(1111, 'MENDES', NULL, 3000)
+;
+
+select * from empregado
+where salario != 1500;
+
+select * from empregado where not salario not between 1000 and 3000;
+
+select * from empregado
+where salario not in (1000,20,5000,2000,3000,99999);
+
+select * from empregado
+where nome not in ('DOMINGOS', 'MENDES');
+
+Select * from empregado where cpf is null; 
+
+select * from empregado 
+where nome like "m%"
+or salario < 2000 
+order by nome desc, salario desc
+limit 1000;
+
+
+
+select * from empregado where salario like '%00%';
+
+
+INSERT INTO empregado 
+(matricula, nome, cpf, salario) 
+VALUES 
+(220, 'JOSEFA', '01123456700', 1500), 
+(223, 'Mariana', '01023456789', 1500), 
+(224, 'PEDRO', '01223456789', 1500),
+(333, 'DOMINGUES', '01123456788', 10500),
+(111, 'MENDEZ', NULL, 3000),
+(2209, 'JOSEFINA', '02123456700', 1500), 
+(2239, 'Mariano', '02023456789', 1500), 
+(2249, 'PAULO', '02223456789', 1500),
+(3339, 'SAVIO', '02123456788', 10500),
+(1119, 'AMARAL', NULL, 3000),
+(2220, 'Lorena', '123456700', 1500), 
+(2223, 'Maria', '023456789', 1500), 
+(2224, 'Jose', '223456789', 1500),
+(3333, 'DOMINGOS', '123456788', 10500),
+(1111, 'MENDES', NULL, 3000)
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE DATABASE aula_noite5;
+
+USE aula_noite5;
+
+CREATE TABLE empregado (
+matricula int primary key,
+nome varchar (100) not null,
+cpf varchar (14) unique,
+salario decimal (10,2) not null,
+id_depto int not null
+);
+
+select *from empregado;
+
+INSERT INTO empregado 
+(matricula, nome, cpf, salario, id_depto) 
+VALUES 
+(220, 'JOSEFA', '01123456700', 1500, 2), 
+(223, 'Mariana', '01023456789', 1500, 1), 
+(224, 'PEDRO', '01223456789', 1500, 3),
+(333, 'DOMINGUES', '01123456788', 10500, 1),
+(111, 'MENDEZ', NULL, 3000, 1),
+(2209, 'JOSEFINA', '02123456700', 1500, 2), 
+(2239, 'Mariano', '02023456789', 1500, 3), 
+(2249, 'PAULO', '02223456789', 1500, 4),
+(3339, 'SAVIO', '02123456788', 10500, 5),
+(1119, 'AMARAL', NULL, 3000, 1),
+(2220, 'Lorena', '123456700', 1500, 2), 
+(2223, 'Maria', '023456789', 1500, 3), 
+(2224, 'Jose', '223456789', 1500, 4),
+(3333, 'DOMINGOS', '123456788', 10500, 5),
+(1111, 'MENDES', NULL, 3000, 1)
+;
+
+select count(distinct salario) from empregado;
+
+select sum(salario) from empregado; 
+
+select max(salario) from empregado; 
+
+select min(salario) from empregado; 
+
+select avg(salario) from empregado; 
+
+select sum(salario) / count(*), avg(salario)
+ from empregado; 
+ 
+ select count(*), sum(salario), max(salario), min(salario), avg(salario) 
+ from empregado;
+ 
+ select id_depto, max(salario) from empregado 
+ group by id_depto; 
+ 
+ select id_depto, count(*) from empregado 
+ group by id_depto; 
+ 
+select id_depto, count(*), max(salario) from empregado 
+group by id_depto; 
+
+select id_depto, count(*), max(salario), avg(salario) from empregado 
+group by id_depto; 
+
+select id_depto, count(*), max(salario), avg(salario) from empregado 
+where id_depto in (3, 4, 5) 
+group by id_depto; 
+
+select count(*), id_depto, salario from empregado
+group by id_depto, salario;
+
+
+
+
+
+
+
+ 
